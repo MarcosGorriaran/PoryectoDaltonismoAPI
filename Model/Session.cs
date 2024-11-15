@@ -2,9 +2,9 @@
 {
     public class Session
     {
-        public string SessionID { get; set; }
-        public string ColorBlindType { get; set; }
-        public DateTime DateGame { get; set; }
-        public Patient player { get; set; }
+        public virtual string SessionID { get; set; }
+        public virtual string ColorBlindType { get; set; }
+        public virtual DateTime DateGame { get; set; }
+        public virtual Patient player { get; set; }
     }
 }

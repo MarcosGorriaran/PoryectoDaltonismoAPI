@@ -5,11 +5,11 @@ namespace APIDaltonismoDB.Model
 {
     public class Patient
     {
-        public string DNI { get; set; }
-        public string Name { get; set; }
-        public string Password { get; set; }
-        public DateOnly BirthDate { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
+        public virtual string DNI { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Password { get; set; }
+        public virtual DateOnly BirthDate { get; set; }
+        public virtual string City { get; set; }
+        public virtual string Country { get; set; }
     }
 }
