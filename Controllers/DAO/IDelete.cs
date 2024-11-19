@@ -1,6 +1,8 @@
 ﻿namespace APIDaltonismoDB.Controllers.DAO
 {
-    public interface IDelete
+    public interface IDelete<Model>
     {
+        public void Delete<IDValueType>(IDValueType id);
+        public void Delete(Model infoToDelete);
     }
 }
