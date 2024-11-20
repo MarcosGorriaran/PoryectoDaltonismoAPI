@@ -5,7 +5,7 @@ namespace APIDaltonismoDB.Maps
 {
     public class SessionMap : ClassMap<Session>
     {
-        const string TableName = "Sessions";
+        const string TableName = "Sessiones";
         public SessionMap() 
         {
             Table(TableName);

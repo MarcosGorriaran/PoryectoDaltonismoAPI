@@ -1,3 +1,5 @@
+using cat.itb.M6UF2EA3.connections;
+
 namespace ColorBlindProyect_Api
 {
     public class Program
@@ -14,7 +16,7 @@ namespace ColorBlindProyect_Api
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });*/
-
+            SessionFactoryCloud.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? String.Empty;
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy(name: CORSPolicyName,

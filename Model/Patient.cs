@@ -8,7 +8,7 @@ namespace APIDaltonismoDB.Model
         public virtual string DNI { get; set; }
         public virtual string Name { get; set; }
         public virtual string Password { get; set; }
-        public virtual DateOnly BirthDate { get; set; }
+        public virtual DateTime BirthDate { get; set; }
         public virtual string City { get; set; }
         public virtual string Country { get; set; }
     }
