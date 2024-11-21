@@ -25,7 +25,7 @@ namespace KillerRobot_Api.Utils
         /// <returns>A string containing a hexadecimal number of the hashed text</returns>
         public static string SHA256Hashing(string dataString)
         {
-            byte[] hashedData = SHA256Hashing(System.Text.Encoding.Unicode.GetBytes(dataString));
+            byte[] hashedData = SHA256Hashing(System.Text.Encoding.UTF8.GetBytes(dataString));
             return ByteToHex(hashedData);
         }
         /// <summary>
