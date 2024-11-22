@@ -12,6 +12,7 @@ namespace cat.itb.M6UF2Pr
     {
         private NHibernate.ISession session = SessionFactoryCloud.Open<T>();
 
+        public NHibernate.ISession Session { get { return session; } }
 
         public CRUD()
         {
@@ -63,18 +64,27 @@ namespace cat.itb.M6UF2Pr
         /// </summary>
         /// <param name="element">The object the method will update from the table database</param>
         /// <returns>True if it has succesfully updated or false if it has failed</returns>
-        public bool Update(T element)
+        public void Update(T element)
         {
-            throw new NotImplementedException();
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                session.Update(element);
+                transaction.Commit();
+            }
         }
         /// <summary>
         ///     Deletes the given object from the database
         /// </summary>
         /// <param name="element">The object to be deleted from the database</param>
         /// <returns>True if it has succesfully deleted the row or false if it has failed</returns>
-        public bool Delete(T element)
+        public void Delete(T element)
         {
-            throw new NotImplementedException();
+            string showInsertResult;
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                session.Delete(element);
+                transaction.Commit();
+            }
         }
         public void Dispose()
         {
