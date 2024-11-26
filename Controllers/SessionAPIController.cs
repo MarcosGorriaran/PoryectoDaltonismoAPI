@@ -39,6 +39,10 @@ namespace APIDaltonismoDB.Controllers
             try
             {
                 _response.Data = _dbSession.SelectById(id);
+                if(_response.Data == null)
+                {
+                    throw new Exception("Object ID does not exist");
+                }
             }
             catch (Exception ex)
             {
@@ -52,6 +56,17 @@ namespace APIDaltonismoDB.Controllers
         {
             try
             {
+                CRUD<Patient> patientSession = new CRUD<Patient>();
+                session.player = patientSession.SelectById(session.player.DNI);
+                try
+                {
+                    session.SessionID = Convert.ToString(Convert.ToInt32(_dbSession.SelectAll().Max(x => x.SessionID)) + 1);
+                }
+                catch (InvalidOperationException)
+                {
+                    session.SessionID ="1";
+                }
+                
                 _dbSession.Insert(session);
             }
             catch (Exception ex)
