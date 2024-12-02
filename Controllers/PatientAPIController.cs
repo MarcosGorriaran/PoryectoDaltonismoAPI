@@ -75,7 +75,18 @@ namespace APIDaltonismoDB.Controllers
                 if (CheckLogin(patient,out _))
                 {
                     CRUD<Session> sessionDB = new CRUD<Session>();
-                    Session[] patientSessions = sessionDB.SelectAll().Where(ses => ses.player.DNI == patient.DNI).ToArray();
+                    Session[] patientSessions = sessionDB.SelectAll().Where((ses) => 
+                    {
+                        try
+                        {
+                            return ses.player.DNI == patient.DNI;
+                        }
+                        catch (Exception)
+                        {
+                            return false;
+                        }
+                        
+                    }).ToArray();
                     _response.Data = patientSessions;
                 }
                 else

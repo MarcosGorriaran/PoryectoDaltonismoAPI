@@ -57,10 +57,19 @@ namespace APIDaltonismoDB.Controllers
             try
             {
                 CRUD<Patient> patientSession = new CRUD<Patient>();
-                session.player = patientSession.SelectById(session.player.DNI);
                 try
                 {
-                    session.SessionID = Convert.ToString(Convert.ToInt32(_dbSession.SelectAll().Max(x => x.SessionID)) + 1);
+                    session.player = patientSession.SelectById(session.player.DNI);
+                }
+                catch (NullReferenceException)
+                {
+                    session.player = null;
+                }
+                
+                try
+                {
+
+                    session.SessionID = Convert.ToString(Convert.ToInt32(_dbSession.SelectAll().Max(x => Convert.ToInt32(x.SessionID))) + 1);
                 }
                 catch (InvalidOperationException)
                 {
